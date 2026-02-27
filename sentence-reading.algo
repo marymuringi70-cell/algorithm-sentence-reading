@@ -1,0 +1,32 @@
+ALGORITHM analyze_sentence
+VAR
+    char_count : INTEGER := 0;
+    word_count : INTEGER := 1; // Starting at 1 because the last word ends with a '.'
+    vowel_count : INTEGER := 0;
+    c : CHAR;
+BEGIN
+    WHILE (TRUE) DO
+        Read(c);
+        char_count := char_count + 1;
+
+        // Check for vowels
+        IF (c = 'a' OR c = 'e' OR c = 'i' OR c = 'o' OR c = 'u' OR
+            c = 'A' OR c = 'E' OR c = 'I' OR c = 'O' OR c = 'U') THEN
+            vowel_count := vowel_count + 1;
+        END_IF
+
+        // Check for words (spaces)
+        IF (c = ' ') THEN
+            word_count := word_count + 1;
+        END_IF
+
+        // Stop if we hit a period
+        IF (c = '.') THEN
+            BREAK;
+        END_IF
+    END_WHILE
+
+    Write("Length: ", char_count);
+    Write("Words: ", word_count);
+    Write("Vowels: ", vowel_count);
+END
